@@ -1,8 +1,10 @@
-import React, { Component } from 'react';
+import React, { Component, Fragment } from 'react';
 import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
+import Payments from './Payments';
 
 class Header extends Component {
+  // this.props.auth - is actually a user model
   renderContent() {
     switch (this.props.auth) {
       case null:
@@ -13,7 +15,11 @@ class Header extends Component {
         );
       default:
         return (
-          <li><a href="/api/logout">Logout</a></li>
+          <Fragment>
+            <li><Payments /></li>
+            <li style={{ margin: '0 10px' }}>Credits: {this.props.auth.credits}</li>
+            <li><a href="/api/logout">Logout</a></li>
+          </Fragment>
         );
     }
   }
