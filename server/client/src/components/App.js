@@ -7,7 +7,23 @@ import Header from './Header';
 import Landing from './Landing';
 import Dashboard from './Dashboard';
 
-const SurveyNew = () => <h2>SurveyNew</h2>;
+// this is test
+const survey = {
+	title: 'title',
+	subject: 'subject',
+	recipients: 'oleonortt@gmail.com',
+	body: 'body of email'
+};
+
+const SurveyNew = (props) => (
+  <div>
+    <h2>New Surveys</h2>
+    <button onClick={() => props.postSurvey(survey)}>Post survey</button>
+  </div>
+);
+
+const PostSurvey = connect(null, actions)(SurveyNew);
+// end of test
 
 class App extends Component {
   componentDidMount() {
@@ -22,7 +38,7 @@ class App extends Component {
             <Header />
             <Route exact path='/' component={Landing} />
             <Route exact path='/surveys' component={Dashboard} />
-            <Route exact path='/surveys/new' component={SurveyNew} />
+            <Route exact path='/surveys/new' component={PostSurvey} />
           </div>
         </BrowserRouter>
       </div>

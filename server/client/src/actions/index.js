@@ -21,3 +21,15 @@ export const handleToken = token => async dispatch => {
     payload: response.data
   });
 };
+
+// test for surveys
+
+export const postSurvey = survey => async dispatch => {
+  const response = await axios.post('/api/surveys', survey);
+
+  // fetching the user, since usermodel contains the credit amount
+  dispatch({
+    type: FETCH_USER,
+    payload: response.data
+  });
+};

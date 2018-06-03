@@ -8,16 +8,6 @@ import 'materialize-css/dist/css/materialize.min.css';
 import App from './components/App';
 import reducers from './reducers';
 
-import axios from 'axios';
-window.axios = axios;
-
-const survey = {
-	title: 'title',
-	subject: 'subject',
-	recipients: 'oleonortt@gmail.com',
-	body: 'body of email'
-};
-
 const store = createStore(reducers, {}, applyMiddleware(reduxThunk));
 
 ReactDOM.render(
